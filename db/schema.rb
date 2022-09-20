@@ -56,11 +56,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_20_032251) do
 
   create_table "cart_sessions", force: :cascade do |t|
     t.bigint "user_id"
-    t.bigint "order_status_id"
+    t.string "order_status"
     t.integer "sum"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["order_status_id"], name: "index_cart_sessions_on_order_status_id"
     t.index ["user_id"], name: "index_cart_sessions_on_user_id"
   end
 
@@ -94,17 +93,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_20_032251) do
 
   create_table "order_statuses", force: :cascade do |t|
     t.string "name"
+    t.bigint "order_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_statuses_on_order_id"
   end
 
   create_table "orders", force: :cascade do |t|
     t.bigint "user_id"
-    t.bigint "order_status_id"
+    t.string "order_status"
     t.integer "sum"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["order_status_id"], name: "index_orders_on_order_status_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 

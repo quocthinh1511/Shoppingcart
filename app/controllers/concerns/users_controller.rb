@@ -44,9 +44,6 @@ class UsersController < ApplicationController
             render 'edit'
         end
     end
-   def user 
-     return @user
-   end
     def index
         @users = User.where(activated: true).paginate(page: params[:page])
     end

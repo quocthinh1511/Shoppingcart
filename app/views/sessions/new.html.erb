@@ -1,18 +1,20 @@
 <% provide(:title, "Log in") %>
-<h1>Log in</h1>
-<div class="row">
-<div class="col-md-6 col-md-offset-3">
+<h1><span class= 'textnewwwww ' > <i class="uil uil-gitlab"></i></i> Login </span> </h1>
+<div class="login">
+<img src="http://www.uplevo.com/img/designbox/anh-bia-facebook-kinh-va-quyen-sach.jpg" class="imglog" alt="..."> </img>
+<div class="col-md-6 col-md-offset-3 leftt">
 <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
+<i class="uil uil-envelope-edit"></i>
 <%= f.label :email %>
-<%= f.email_field :email, class: 'form-control' %>
-<%= f.label :password %>
-<%= f.password_field :password, class: 'form-control' %>
+<%= f.email_field :email, class: 'form-control sizee' %>
+<i class="uil uil-keyhole-square"></i>
+<%= f.label :password %> <%= link_to "   (Forgot password?)", new_password_reset_path %>
+<%= f.password_field :password, class: 'form-control sizee' %>
 <%= f.label :remember_me, class: "checkbox inline" do %>
 <%= f.check_box :remember_me %>
 <span>Remember me on this computer</span>
 <% end %>
-<%= link_to "(Forgot password?)", new_password_reset_path %>
-<%= f.submit "Log in", class: "btn btn-primary" %>
+<%= f.submit "Log in", class: "btn btn-primary sizee margintoplogin" %>
 <% end %>
 <p>New user? <%= link_to "Sign up now!", signup_path %></p>
 </div>

@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   resources :shops
   resources :orders
   resources :categories
+  resources :cart_sessions
   get '/shoppage', to: 'products#index_shop'
   get '/search', to: 'products#search'
 

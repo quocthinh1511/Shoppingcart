@@ -23,7 +23,6 @@ class OrdersController < ApplicationController
     @order = current_order
     @order.user_id = session[:user_id]
     @cart_session = CartSession.new(session_param(@order))
-
     if @cart_session.save 
       @order.order_items.each do |order_item|
         # Copy CartItem to OrderItem
@@ -60,6 +59,8 @@ class OrdersController < ApplicationController
       cart_session_id: cart_session.id,
       product_id: order_item.product_id,
       quantity: order_item.quantity,
+      unit_price: order_item.unit_price, 
+      total_price: order_item.total_price
     }
   end
 

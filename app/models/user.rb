@@ -1,6 +1,7 @@
 class User < ApplicationRecord
     has_one :shop
     has_many :microposts, dependent: :destroy
+    has_many :cart_sessions
     attr_accessor :remember_token, :activation_token, :reset_token
     before_save :downcase_email
     before_create :create_activation_digest

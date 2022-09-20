@@ -28,14 +28,12 @@
                                             <div class="inner-circle"></div>
                                         </div>
                                     </td>
+                                   
                                     <td><%=order.id%></td>
                                     <td><%=order.user.name%></td>
                                     <td><span class="badge badge-danger black"> 
                                     <% if order.order_status.nil?%>
-                                            <%= form_with(model: order, local:true ) do |f| %>
-                                            <%= f.text_field :order_status, class: 'form-control' %>
-                                            <%= f.submit "Update" ,class: "btn" %>
-                                            <%end%>
+                                            <%= "Processing" %>   
                                     <%else%>
                                           <%= order.order_status %>             
                                     <%end%>

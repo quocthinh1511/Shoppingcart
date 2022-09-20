@@ -48,6 +48,7 @@
           <ul class="dropdown-menu"> 
           <li><%= link_to "Profile", current_user, class: 'dropdown-item ' %></li>
             <li><%= link_to "Settings",  edit_user_path(current_user) ,class:'dropdown-item ' %></li>
+              <li><%= link_to "Your Order", index_user_path  , class: 'dropdown-item ' %></li>
             <% if !create_shop?  %>
             <li><%= link_to "Create Shop", new_shop_path, class: 'dropdown-item ' %></li>
             <%end%>

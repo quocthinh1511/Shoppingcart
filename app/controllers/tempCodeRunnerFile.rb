@@ -1,0 +1,1 @@
+ @user.update_attribute(:role, 2)

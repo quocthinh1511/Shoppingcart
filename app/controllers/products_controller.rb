@@ -6,12 +6,15 @@ class ProductsController < ApplicationController
         @order_item = current_order.order_items.new
         @shops = Shop.all
     end
+
     def index_shop    
         @products = current_shop.products
     end
+
     def search
         @products = Product.where("name LIKE?", '%' + params[:q]+ '%')
     end
+
     def show 
         @product = Product.find_by(id: params[:id])
     end
@@ -29,7 +32,6 @@ class ProductsController < ApplicationController
         flash[:success] = "Product deleted"
         redirect_to shoppage_path
     end
-
     def create
         @product = current_shop.products.build(product_params)
         if @product.save

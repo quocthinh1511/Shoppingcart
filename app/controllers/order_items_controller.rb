@@ -2,7 +2,7 @@ class OrderItemsController < ApplicationController
 
  
     def create
-      @product = Product.find_by(id: params[:id])
+      #@product = Product.find_by(id: params[:id])
       @order = current_order
       @order_item = @order.order_items.new(order_item_params)
         @order.user_id = session[:user_id]

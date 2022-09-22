@@ -13,7 +13,7 @@ class OrderItem < ActiveRecord::Base
       product.price
     end
   end
-
+  
   def total_price
     unit_price * quantity
   end

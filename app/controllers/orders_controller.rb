@@ -44,7 +44,7 @@ class OrdersController < ApplicationController
     end
   private 
   def order_params    
-    params.require(:order).permit(:sum, :user_id, :order_status_id)
+    params.require(:order).permit(:sum, :user_id)
   end
   def logged_in_user
     unless logged_in?

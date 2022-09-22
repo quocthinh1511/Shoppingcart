@@ -5,16 +5,16 @@ class ApplicationController < ActionController::Base
     def hello
         render html: "hello, world!"
     end
+    def current_order
+      if !Order.find_by(user_id: session[:user_id]).nil?
+        Order.find_by(user_id: session[:user_id])
+      else
+        Order.new
+      end
+    end
     include SessionsHelper
     include ShoppersHelper
     private 
-    def current_order
-        if !Order.find_by(user_id: session[:user_id]).nil?
-          Order.find_by(user_id: session[:user_id])
-        else
-          Order.new
-        end
-    end
     #def initialize_session 
        # session[:cart]||= []
    # end

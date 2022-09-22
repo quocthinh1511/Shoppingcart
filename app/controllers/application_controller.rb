@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
         render html: "hello, world!"
     end
     include SessionsHelper
+    include ShoppersHelper
     private 
     def current_order
         if !Order.find_by(user_id: session[:user_id]).nil?
@@ -13,7 +14,7 @@ class ApplicationController < ActionController::Base
         else
           Order.new
         end
-      end
+    end
     #def initialize_session 
        # session[:cart]||= []
    # end

@@ -3,6 +3,7 @@ class CreateOrderItems < ActiveRecord::Migration[7.0]
     create_table :order_items do |t|
             t.references :product
             t.references :order
+            t.string :order_status
             t.integer :quantity 
             t.integer :unit_price , default:0
             t.integer :total_price ,default:0

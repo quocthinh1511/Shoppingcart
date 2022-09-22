@@ -1,10 +1,12 @@
 class ShopsController < ApplicationController    
     before_action :logged_in_user, only: [:create, :destroy]
+    before_action :set_categories
+    
     def show 
         @shop = Shop.find_by(id: params[:id])
+        @products = current_shop.products
        # @product= Product.find(params[:id])
     end
-
     def new
         @shop = Shop.new
     end 
@@ -57,4 +59,7 @@ class ShopsController < ApplicationController
             redirect_to login_url
             end
         end 
+        def set_categories 
+            @category = Category.all.order(:name)
+        end
 end

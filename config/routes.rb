@@ -26,7 +26,8 @@ Rails.application.routes.draw do
   resources :orders
   resources :categories
   resources :cart_sessions
-  get '/index_user', to: 'cart_sessions#index_user'
+  resources :cart_items
+  get '/index_user', to: 'cart_items#index_user'
   get '/shoppage', to: 'products#index_shop'
   get '/search', to: 'products#search'
 

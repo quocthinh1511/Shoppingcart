@@ -15,11 +15,6 @@ module SessionsHelper
         end
         end
     end
-
-    def current_shop
-        @current_shop = Shop.find_by( $current_shop_id)
-    end
-
     def logged_in?
         !current_user.nil?
     end
@@ -28,7 +23,7 @@ module SessionsHelper
         forget(current_user)
         session.delete(:user_id)
         @current_user = nil
-        session.delete(:order_id)
+        #session.delete(:order_id)
     end
 
     def remember(user)
@@ -50,9 +45,6 @@ module SessionsHelper
     def getId(product)
         $current_product_id = @product.id
     end
-    def getId(shop)
-        $current_shop_id = @shop.id
-    end
 
 
     def current_product
@@ -61,6 +53,12 @@ module SessionsHelper
  
     def current_category 
         @current_category = Category.find(params[:id])
+    end
+    def getId(shop)
+        $current_shop_id = @shop.id
+    end
+    def current_shop
+        @current_shop = Shop.find_by( $current_shop_id)
     end
     #def current_order
        # if !session[:order_id].nil?

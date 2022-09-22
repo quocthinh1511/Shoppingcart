@@ -1,5 +1,4 @@
 <% provide(:title, 'Sign up') %>
-
 <h1><span class= 'textnewwww ' > <i class="uil uil-visual-studio margin-rightt"></i>Sign Up </span> </h1>
 <%= render 'shared/error_messages' %>
  <img src="https://img5.thuthuatphanmem.vn/uploads/2021/12/28/hinh-nen-cuon-sach-4k_012550501.jpg" class="imgsign" alt="..."> </img>
@@ -17,7 +16,7 @@
 <%= f.password_field :password, class: 'form-control sizee', placeholder: "Enter password " %>
 <i class="uil uil-keyhole-square"></i>
 <%= f.label :password_confirmation, "Confirmation" %>
-<%= f.password_field :password_confirmation, class: 'form-control size',placeholder: "Enter password again"  %>
+<%= f.password_field :password_confirmation, class: 'form-control sizee',placeholder: "Enter password again"  %>
 <%= f.submit "Create my account",class: "btn btn-primary sizee" %>
 <% end %>
 </div>

@@ -13,35 +13,38 @@
                                         </div>
                                     </th>
                                     <th>Order</th>
-                                    <th>Customer Name</th>
-                                    <th>status</th>
+                                    <th>Product name</th>
+                                    <th>Status</th>
                                     <th>Total</th>
                                     <th>Created</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody class="table-body">
-                        
-                          <% @cart_sessions.each do |order| %>
+                          <% @cart_items.each do |order| %>
                                 <tr class="cell-1">
                                     <td class="text-center">
                                         <div class="toggle-btn">
                                             <div class="inner-circle"></div>
                                         </div>
                                     </td>
-                                     <%  if order.sum =nil %>
-                                    <%'There are no orders here. Lets shopping'%>
-                                    <%else%>
                                     <td><%=order.id%></td>
-                                    <td><%=order.user.name%></td>
+                                  <td><%=  Product.all.find_by(id: order.product_id).name %></td>
                                     <td><span class="badge badge-danger black"> 
                                     <% if order.order_status.nil?%>
-                                            <%= "Processing" %>   
+                                            <%= form_with(model: order, local:true ) do |f| %>
+                                            <%= f.text_field :order_status, class: 'form-control' %>
+                                            <%= f.submit "Update" ,class: "btn" %>
+                                            <%end%>
                                     <%else%>
-                                          <%= order.order_status %>             
+                                          <%= order.order_status %>   
+                                             <%= form_with(model: order, local:true ) do |f| %>
+                                            <%= f.text_field :order_status, class: 'form-control', placeholder: "Edit " %>
+                                            <%= f.submit "Confirm" ,class: "btn" %>
+                                            <%end%>          
                                     <%end%>
                                     </span></td>
-                                    <td><%= order.sum %></td>
+                                    <td><%= order.total_price %></td>
                                     <td><%= order.created_at%> 
                                      <% if current_user.role ==2  %>
                                 <%= button_to "delete", order, method: :delete,
@@ -50,12 +53,12 @@
                                     <td><i class="fa fa-ellipsis-h text-black-50"></i></td>         
                                 </tr>
                                  <% end %>
-                                 <% end %>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
+     
     </div>
   </div>

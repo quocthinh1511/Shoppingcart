@@ -23,7 +23,7 @@ class OrdersController < ApplicationController
     @order = current_order
     @order.user_id = session[:user_id]
     @cart_session = CartSession.new(session_param(@order))
-    if @cart_session.save 
+    if @cart_session.save
       @order.order_items.each do |order_item|
         # Copy CartItem to OrderItem
         CartItem.create(newAtrs(@cart_session,order_item))
@@ -35,14 +35,13 @@ class OrdersController < ApplicationController
           end
         end
       end
-
       @order.destroy
       flash[:success] = "Order successfully"
       redirect_to root_path
     else 
       flash[:danger] = "Order fail"  
     end
-  end
+    end
   private 
   def order_params    
     params.require(:order).permit(:sum, :user_id, :order_status_id)

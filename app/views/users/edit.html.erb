@@ -1,24 +1,32 @@
 <% provide(:title, "Edit user") %>
-<h1>Update your profile</h1>
-<div class="row">
-<div class="col-md-6 col-md-offset-3">
+
+<h1><span class= 'textnewz ' > <i class="uil uil-postcard margin-rightt"></i></i>Update your profile</span> </h1>
+<%= render 'shared/error_messages' %>
+ <img src="https://img5.thuthuatphanmem.vn/uploads/2021/12/28/anh-nen-doc-sach_012535621.jpg" class="imgedit" alt="..."> </img>
+<div class="margin-leftf col-md-6 col-md-offset-3">
 <%= form_with(model: @user,local: true) do |f| %>
 <%= render 'shared/error_messages', object: f.object %>
+<i class="uil uil-user"></i>
 <%= f.label :name %>
 <%= f.text_field :name, class: 'form-control' %>
+<i class="uil uil-envelope-edit"></i>
 <%= f.label :email %>
 <%= f.email_field :email, class: 'form-control' %>
+<i class="uil uil-key-skeleton"></i>
 <%= f.label :password %>
 <%= f.password_field :password, class: 'form-control' %>  
+<i class="uil uil-key-skeleton"></i>
 <%= f.label :password_confirmation, "Confirmation" %>
 <%= f.password_field :password_confirmation, class: 'form-control' %>
+<i class="uil uil-phone"></i>
 <%= f.label :phone %>
 <%= f.phone_field :phone, class: 'form-control' %>
+<i class="uil uil-at"></i>
 <%= f.label :address %>
 <%= f.text_field :address, class: 'form-control'%>
+<i class="uil uil-book-reader"></i>
 <%= f.label :avatar %>
 <%= f.file_field :avatar, class: 'form-control'%>
-<%= f.submit "Save changes", class: "btn btn-primary" %>
+<%= f.submit "Save changes", class: "btn btn-primary margin-bottom30px" %>
 <% end %>
-</div>
 </div>

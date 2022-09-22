@@ -4,24 +4,28 @@
                 <div class="col-md-8 cartt">
                     <div class="title">
                         <div class="row">
-                            <div class="col"><h4><b>Shopping Cart</b></h4></div>
-                            <div class="col align-self-center text-right text-muted"><%= "#{current_order.order_items.size} Items" %></div>
+                            <div class="col"><h4><b><i class="uil uil-store-alt"></i> Shopping Cart</b></h4></div>
+                            <div class="col align-self-center text-right text-muted"><%= "#{current_order.order_items.size} Items " %><i class="uil uil-book"></i></div>
                         </div>
                     </div>    
                     <div class="row border-top border-bottom">
-                        <div class="row main align-items-center">
-                           <% @order_items.each do |item| %>
-                                 <h3><%= item.product.name %></h3>
-                                     <%= image_tag(item.product.image.url, :alt => "rss feed",class: 'img') %>
-                                  <h5><%= "#{item.product.price} $ per one"%></h5>
-                                 <%= form_for item, remote: true do |f| %>
+                        <div class="row main align-items-center"> <% @order_items.each do |item| %>
+                         <div class="d-flex justify-content-between align-items-center mt-3 p-2 items rounded">
+                        <div class="d-flex flex-row"> <%= image_tag(item.product.image.url, :alt => "rss feed",class: 'img') %>
+                            <div class="ml-2"><span class="font-weight-bold d-block margin-leftf">  <h5><%= item.product.name %></h5></span><span class="spec"> <p><%= "#{item.product.price} $ per one"%></p></span></div>
+                        </div>
+                        <div class="d-flex flex-row align-items-center"><span class="d-block">  <%= form_for item, remote: true do |f| %>
                                       <%= f.hidden_field :product_id, :value => item.product.id %>
                                       <%= f.number_field :quantity, :value => item.quantity.to_i %>
-                                      <%= f.submit "Update Card", class: 'btn-primary btn'%>
+                                      <%= f.submit "Update Card", class: ''%>
                                  <% end %>
-                                   <%= button_to "Remove Items", order_item_path(item), method: :delete, remote: true, class: 'btn btn-primary'%>
-                                  <h2>Subtotal: <%= item.total_price %></h2>
-                              <% end %>
+                                 <%= button_to order_item_path(item), method: :delete do %>
+                          <i class="uil uil-trash-alt 30px"></i>
+                            <% end %> 
+                            <span class="d-block ml-5 font-weight-bold"><p>Subtotal: <%= "#{item.total_price}$" %></p></span>
+                                 </span></div>
+                    </div>
+                           <% end %>    
                         </div>
                     </div>
             
@@ -44,7 +48,7 @@
                         <div class="col">TOTAL PRICE</div>
                         <div class="col text-right"> <%="#{current_order.sum}$" %> </div>
                     </div>
-                   <%= button_to "Check Out",cartsubmit_path , method: :post ,remote: true, class: 'btn btn-primary'%>
+                   <%= button_to "Check Out", cartsubmit_path , method: :post ,remote: true, class: 'btn btn-primary'%>
                     </div>
             </div>
                    </div>

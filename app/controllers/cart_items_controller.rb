@@ -1,5 +1,4 @@
 class CartItemsController < ApplicationController
-
     def index
       @products = Product.where(shop_id: current_shop.id)
       @cart_items = CartItem.where(product_id: @products.ids)

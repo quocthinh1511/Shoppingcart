@@ -37,6 +37,6 @@ Rails.application.routes.draw do
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :microposts, only: [:create, :destroy]
-  get 'products/:id/showtocart', to: 'products#showtocart', as: 'showtocart'
+  post 'products/:id/showtocart', to: 'products#showtocart', as: 'showtocart'
   #post 'order_items/:id/create', to: 'order_items#create', as: 'orderitem'
 end

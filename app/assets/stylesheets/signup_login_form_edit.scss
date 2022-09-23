@@ -1,6 +1,9 @@
 .leftt {
  margin-left: 70px!important;
 }
+.lefttt {
+    margin-left: 40px!important;
+   }
 .sizee {
     width: 600px!important;
 }
@@ -13,7 +16,32 @@
     right:60px;
     width: 600px;
     height: 360px;
-    margin-top: 30px;
+    margin-top: 10px;
+}
+.imgpro{
+    position: absolute;
+    right:60px;
+    width: 600px;
+    height: 490px;
+    margin-top: 30px; 
+}
+.textp{
+    font-size: 50px;
+    background: url(https://i.pinimg.com/736x/6b/af/86/6baf863475bdb05459df05af5f17c950.jpg);
+    -webkit-background-clip: text;
+    color:transparent;
+    background-position: center;
+    background-size: 100%;
+    font-weight: 760; 
+} 
+.texteditshop{
+    font-size: 50px;
+    background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTb7hZPsCjlVb16EEjjVLGd8tNRpGc9TWkTwQ&usqp=CAU);
+    -webkit-background-clip: text;
+    color:transparent;
+    background-position: center;
+    background-size: 100%;
+    font-weight: 760; 
 }
 .textnewwww { 
     font-size: 50px;
@@ -37,6 +65,13 @@
     width: 600px;
     height: 230px;
     margin-top: 30px;
+}
+.imgshop{
+    position: absolute;
+    right:60px;
+    width: 600px;
+    height: 390px;
+    margin-top: 30px; 
 } 
 .margin-rightt{
     margin-right: 30px;

@@ -1,16 +1,22 @@
 <% provide(:title, "Edit shop") %>
-<h1>Update your Shop's information </h1>
-<div class="row">
-<div class="col-md-6 col-md-offset-3">
+<h1></h1>
+<h1><span class= 'texteditshop lefttt' > <i class="uil uil-shopping-bag margin-rightt"></i>Update your Shop's information  </span> </h1>
+ <img src="https://png.pngtree.com/png-vector/20190318/ourlarge/pngtree-the-elements-of-lovely-planar-cartoon-street-view-bookstore-png-image_858422.jpg" class="imgshop" alt="..."> </img>
+<div class="col-md-6 col-md-offset-3 lefttt">
 <%= form_with(model: @shop,  local:true) do |f| %>
+<i class="uil uil-user-times"></i>
 <%= f.label :name %>
 <%= f.text_field :name, class: 'form-control', placeholder: "Enter your new name shop"  %>
+<i class="uil uil-pen"></i>
 <%= f.label :description%>
 <%= f.text_field :description, class: 'form-control',placeholder: "What's your logan?"  %>
+<i class="uil uil-phone-alt"></i>
 <%= f.label :phone%>
 <%= f.text_field :phone, class: 'form-control',placeholder: "Your number?"  %>
+<i class="uil uil-print"></i>
 <%= f.label :tax_code%>
 <%= f.text_field :tax_code, class: 'form-control',placeholder: "Tax code?"  %>
+<i class="uil uil-images"></i>
 <%= f.label :avatar %>
 <%= f.file_field :avatar, class: 'form-control',placeholder: "Add a link" %> 
 <%= f.submit "Save changes", class: "btn btn-primary" %>

@@ -3,9 +3,10 @@ class ShopsController < ApplicationController
     before_action :set_categories
     
     def show 
+        @user = User.find_by(id: params[:id])
         @shop = Shop.find_by(id: params[:id])
-        @products = current_shop.products
-       # @product= Product.find(params[:id])
+        @products = @shop.products
+        #@product= Product.find(params[:id])
     end
     def new
         @shop = Shop.new

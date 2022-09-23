@@ -12,14 +12,13 @@
 </ol>
 <%= will_paginate @microposts %>
 <% end %>
-
     <div class="row d-flex justify-content-center align-items-center h-100 ">
       <div class="col col-md-9 col-lg-7 col-xl-5 ">
         <div class = 'backwhite'>
           <div class="card-body p-4 floatleft ">
             <div class="d-flex text-black">
               <div class="flex-shrink-0">
-               <%= image_tag(@user.avatar.url, :alt => "rss feed",class: 'img') %>
+               <%= image_tag(@user.avatar.url, :alt => "https://cdn-icons-png.flaticon.com/512/149/149071.png",class: 'img') %>
               </div>
               <div class="flex-grow-1 ms-3 white ">
                 <h5 class="mb-1"><%= @user.name %></h5>

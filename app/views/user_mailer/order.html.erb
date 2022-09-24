@@ -1,0 +1,25 @@
+<h1>QT'BookStore</h1>
+<p>Hi <%= @user.name %></p>
+<p>
+Thanks for your order
+</p>
+<h4> Your order confirmation </h4>
+<h3> Total items <%=@cart_items.size%></h3>
+    
+    <table>
+    <% @cart_items.each do |order| %>
+  <tr>
+    <th>Name</th>
+    <th>quantity <th>
+    <th>Total price</th>
+  </tr>
+  <tr>
+ <td> Book's: <%= Product.all.find_by(id: order.product_id).name%></td>
+  </tr>
+  <tr>
+     <td>quantity <%=order.quantity%></td>
+  </tr>
+  <tr> <td> Total: <%=order.total_price%></p> </td>
+   <% end %>
+</table>                          
+   

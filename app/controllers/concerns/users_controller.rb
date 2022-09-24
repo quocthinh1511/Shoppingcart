@@ -12,8 +12,7 @@ class UsersController < ApplicationController
         end 
         @user = User.find(params[:id])
         @microposts = @user.microposts.paginate(page: params[:page])
-        redirect_to root_url and return unless true
-     
+        redirect_to root_url and return unless true     
     end
     def create
         @user = User.new(user_params) # Not the final implementation!

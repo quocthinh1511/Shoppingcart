@@ -19,4 +19,14 @@ class UserMailer < ApplicationMailer
     @user = user
     mail to: user.email, subject: "Password reset"
   end
+  def cartsession 
+    @cart_sesison = 
+  end
+  # mail for order completely
+  def order(user)
+    @user = user
+    @cart_sesison = cartsession
+    @cart_items = CartItem.where(cart_session_id: @cart_sesison.id)
+    mail to: "to@example.org"
+  end
 end

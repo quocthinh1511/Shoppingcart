@@ -20,10 +20,12 @@ class OrdersController < ApplicationController
        # render 'products/index'
     end
   def checkout
+    @user = current_user
     @order = current_order
     @order.user_id = session[:user_id]
     @cart_session = CartSession.new(session_param(@order))
     if @cart_session.save
+      @user.send_order_email
       @order.order_items.each do |order_item|
         # Copy CartItem to OrderItem
         CartItem.create(newAtrs(@cart_session,order_item))

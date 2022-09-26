@@ -64,9 +64,8 @@ class User < ApplicationRecord
     end
     
     def send_order_email
-        UserMailer.order(self).deliver_now
+        UserMailer.order(self).deliver_later
     end
-
     private 
     def downcase_email
         self.email = email.downcase
@@ -81,7 +80,6 @@ class User < ApplicationRecord
         self.order_token = User.new_token
         self.order_digest = User.digest(order_token)
     end
-
     def password_reset_expired?
         reset_sent_at < 2.hours.ago
     end

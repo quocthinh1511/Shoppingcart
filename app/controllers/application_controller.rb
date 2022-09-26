@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
       if !Order.find_by(user_id: session[:user_id]).nil?
         Order.find_by(user_id: session[:user_id])
       else
-        Order.new
+       Order.new
       end
     end
     include SessionsHelper

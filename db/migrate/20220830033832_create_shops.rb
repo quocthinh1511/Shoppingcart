@@ -9,5 +9,7 @@ class CreateShops < ActiveRecord::Migration[7.0]
       t.string :avatar 
       t.timestamps
     end
+    add_column :shops, :shop_digest, :string
+    add_column :shops, :shop_mail_at, :datetime
   end
 end

@@ -1,4 +1,5 @@
-Rails.application.routes.draw do
+Rails.application.routes.draw do 
+  root 'static_pages#home'
   get 'cart/show'
   get 'password_resets/new'
   get 'password_resets/edit'
@@ -7,8 +8,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   get 'users/new'
-  root 'static_pages#home'
-  resources :shops
   get 'static_pages/home'
   get 'static_pages/help'
   get 'static_pages/about'
@@ -20,6 +19,11 @@ Rails.application.routes.draw do
   get '/bookpage', to: 'sessions#bookpage'
   post '/shop', to: 'shops#create'
   post '/cartsubmit', to: 'orders#checkout'
+  get '/index_user', to: 'cart_items#index_user'
+  get '/shoppage', to: 'products#index_shop'
+  get '/search', to: 'products#search'
+  get 'products/:id/showtocart', to: 'products#showtocart', as: 'showtocart'
+  #get '/showtocart', to: 'products#showtocart'
   resources :products
   resources :users
   resources :shops
@@ -27,16 +31,11 @@ Rails.application.routes.draw do
   resources :categories
   resources :cart_sessions
   resources :cart_items
-  get '/index_user', to: 'cart_items#index_user'
-  get '/shoppage', to: 'products#index_shop'
-  get '/search', to: 'products#search'
-
-  #get '/showtocart', to: 'products#showtocart'
   resources :cart, only: [:show]
   resources :order_items ,only: [:create, :update, :destroy]
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :microposts, only: [:create, :destroy]
-  get 'products/:id/showtocart', to: 'products#showtocart', as: 'showtocart'
+
   #post 'order_items/:id/create', to: 'order_items#create', as: 'orderitem'
 end

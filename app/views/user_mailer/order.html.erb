@@ -5,21 +5,22 @@ Thanks for your order
 </p>
 <h4> Your order confirmation </h4>
 <h3> Total items <%=@cart_items.size%></h3>
-    
-    <table>
-    <% @cart_items.each do |order| %>
+   
+  <table>
   <tr>
     <th>Name</th>
     <th>quantity <th>
     <th>Total price</th>
   </tr>
+   <% @cart_items.each do |order| %>
   <tr>
- <td> Book's: <%= Product.all.find_by(id: order.product_id).name%></td>
+ <td> Book's name: <%= Product.all.find_by(id: order.product_id).name%></td>
   </tr>
   <tr>
      <td>quantity <%=order.quantity%></td>
   </tr>
-  <tr> <td> Total: <%=order.total_price%></p> </td>
-   <% end %>
-</table>                          
+  <tr> <td> Total: <%=order.total_price%> </td> </tr>
+     <% end %>  
+</table>     
+                   
    

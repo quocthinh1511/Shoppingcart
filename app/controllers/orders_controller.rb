@@ -1,24 +1,22 @@
 class OrdersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
+  before_action :set_shipping
   def new
-    @Order = Order.new
   end
   def index 
-    @orders = Order.all 
+  end
+  def create 
+    @order = current_order
   end
   def destroy 
 
   end
-  def create 
-  # @order = current_user.orders.build(order_params)
-  #  @cart_session.user_id = session[:user_id]
-   # if @order.save
-       # flash[:success] = 'Buy successfully'
-        #redirect_to root_path
-   # else
-       # flash[:warning] = "Try to buy again!!"
-       # render 'products/index'
-    end
+  def update 
+    @order = current_order
+    @order.update(order_params)
+    current_order.shipping_id = @order.shipping_id
+  end
+
   def checkout
     @user = current_user
     @order = current_order
@@ -28,7 +26,13 @@ class OrdersController < ApplicationController
       @user.send_order_email
       @order.order_items.each do |order_item|
         # Copy CartItem to OrderItem
+     
         CartItem.create(newAtrs(@cart_session,order_item))
+         Shop.all.each do |i|
+        if i.id = order_item.product.shop_id
+            i.send_shop_email
+        end
+        end
         # Decrease quantity product
         Product.all.each do |product|
           if (product.name == order_item.product.name && order_item.quantity > 0 )
@@ -44,10 +48,11 @@ class OrdersController < ApplicationController
       flash[:danger] = "Order fail"  
     end
     end
-  private 
+  private
   def order_params    
-    params.require(:order).permit(:sum, :user_id)
+    params.require(:order).permit(:shipping_id)
   end
+
   def logged_in_user
     unless logged_in?
     flash[:danger] = "Please log in."
@@ -64,7 +69,9 @@ class OrdersController < ApplicationController
       total_price: order_item.total_price
     }
   end
-
+  def set_shipping
+    @shipping= Shipping.all.order(:name)
+  end
   def session_param(params)
     {
       user_id: params.user_id,

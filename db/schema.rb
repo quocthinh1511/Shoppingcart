@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_20_032251) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_25_070402) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -102,9 +102,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_20_032251) do
 
   create_table "orders", force: :cascade do |t|
     t.bigint "user_id"
+    t.bigint "shipping_id"
     t.integer "sum"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["shipping_id"], name: "index_orders_on_shipping_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
@@ -132,6 +134,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_20_032251) do
     t.index ["shop_id"], name: "index_products_on_shop_id"
   end
 
+  create_table "shippings", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "shops", force: :cascade do |t|
     t.string "name"
     t.bigint "user_id"
@@ -141,6 +149,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_20_032251) do
     t.string "avatar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "shop_digest"
+    t.datetime "shop_mail_at"
     t.index ["user_id"], name: "index_shops_on_user_id"
   end
 

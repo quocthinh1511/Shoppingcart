@@ -12,6 +12,7 @@ class ShopsController < ApplicationController
         @shop = Shop.new
     end 
     def index
+      @shop = Shop.find_by(id: params[:id])
       @shops = Shop.all
     end
 

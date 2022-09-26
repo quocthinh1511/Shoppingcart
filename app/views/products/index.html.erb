@@ -16,8 +16,6 @@
    <%= image_tag(product.image.url, :alt => "rss feed",class: 'img') %>
     <h6 class="card-text"><%=product.name %> </h6>
     <p class ='card-text'> <%=product.author %> </p>
-     <p class="card-text"><%=product.description %> </p>
-      <p class ='card-text'> Quantity :<%=product.quantity%> </p>
     <p class="card-text">Price :<%=product.price%></p>
     <p class="card-text">Genres :<%=@category.find_by(id: product.category_id).name%></p>
     <p  class="card-text"><%= link_to "#{@shops.find_by(id: product.shop_id).name}" , shop_path(id: product.shop_id) ,class: "" %> </p>

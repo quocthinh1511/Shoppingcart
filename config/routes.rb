@@ -1,4 +1,4 @@
-Rails.application.routes.draw do 
+Rails.application.routes.draw do
   root 'static_pages#home'
   get 'cart/show'
   get 'password_resets/new'
@@ -31,7 +31,11 @@ Rails.application.routes.draw do
   resources :categories
   resources :cart_sessions
   resources :cart_items
-  resources :cart, only: [:show]
+  resources :cart, only: [:show] do
+    member do
+      put :update_shipping_type
+    end
+  end
   resources :order_items ,only: [:create, :update, :destroy]
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:new, :create, :edit, :update]

@@ -1,6 +1,6 @@
-class OrderItemsController < ApplicationController  
+class OrderItemsController < ApplicationController
 
- 
+
     def create
      # @product = Product.find_by(id: params[:id])
       @order = current_order
@@ -10,12 +10,12 @@ class OrderItemsController < ApplicationController
       #session[:order_id] = @order.id
         redirect_to root_path
         flash[:success]= 'Your item added!'
-      else 
+      else
         flass[:danger] = 'Your order quantity must be fewer than products'
         redirect_to showtocart_path
       end
      end
-  
+
       def update
         @order = current_order
         @order_item = @order.order_items.find(params[:id])
@@ -23,7 +23,7 @@ class OrderItemsController < ApplicationController
         @order_items = @order.order_items
         redirect_to cart_path
       end
-      
+
       def destroy
         @order = current_order
         @order_item = @order.order_items.find(params[:id])

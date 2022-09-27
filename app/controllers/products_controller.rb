@@ -1,13 +1,13 @@
-class ProductsController < ApplicationController    
+class ProductsController < ApplicationController
     before_action :set_categories
     before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
     def index
-        @products = Product.paginate(page: params[:page]) 
+        @products = Product.paginate(page: params[:page])
         @order_item = current_order.order_items.new
         @shops = Shop.all
     end
 
-    def index_shop    
+    def index_shop
         @products = current_shop.products
     end
 
@@ -15,12 +15,28 @@ class ProductsController < ApplicationController
         @products = Product.where("name LIKE?", '%' + params[:q]+ '%')
     end
 
-    def show 
+    def show
         @product = Product.find_by(id: params[:id])
     end
-    def showtocart 
+
+    def showtocart
         @product = Product.find_by(id: params[:id])
         @order_item = current_order.order_items.new
+    end
+
+    def add_item_to_cart
+        @product = Product.find_by(id: params[:id])
+        @order_item = current_order.order_items.new
+
+        # Todo implement code
+        if @order.save
+        #session[:order_id] = @order.id
+            redirect_to root_path
+            flash[:success]= 'Your item added!'
+        else
+            flass[:danger] = 'Your order quantity must be fewer than products'
+            render :showtocart
+        end
     end
 
     def new
@@ -46,7 +62,7 @@ class ProductsController < ApplicationController
     def edit
         @product = Product.find(params[:id])
     end
-    
+
     def update
         @product = Product.find_by(id: params[:id])
         if @product.update(product_params)
@@ -58,15 +74,15 @@ class ProductsController < ApplicationController
     end
 
    # def buy
-        #id = params[:id].to_i 
+        #id = params[:id].to_i
        # @product = Product.find(params[:id])
    # end
 
     private
-        def product_params    
+        def product_params
             params.require(:product).permit(:name, :description, :image, :quantity ,:price,:author,:category_id)
         end
-        def set_categories 
+        def set_categories
             @category = Category.all.order(:name)
         end
         def logged_in_user
@@ -74,5 +90,5 @@ class ProductsController < ApplicationController
             flash[:danger] = "Please log in."
             redirect_to login_url
             end
-        end 
+        end
 end

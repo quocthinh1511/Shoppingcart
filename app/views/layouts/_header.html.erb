@@ -65,7 +65,7 @@
         <input class="form-control me-2" name = "q" type="text" placeholder="Search" aria-label="Search">
       <button class= 'btn btn-outline-success' type='submit' >Search </button>
       </form>
-      <%= link_to  cart_path(current_order) do %>
+      <%= link_to  cart_path(current_order.id) do %>
   <i class="uil uil-shopping-cart-alt cart">
    <% if logged_in? %>
   <span class='orderquantity'>

@@ -29,11 +29,11 @@ class OrdersController < ApplicationController
         # Copy CartItem to OrderItem
      
         CartItem.create(newAtrs(@cart_session,order_item))
-         Shop.all.each do |i|
-        if i.id = order_item.product.shop_id
+        #  Shop.all.each do |i|
+        # if i.id = order_item.product.shop_id
             i.send_shop_email
-        end
-        end
+        # end
+        # end
         # Decrease quantity product
         Product.all.each do |product|
           if (product.name == order_item.product.name && order_item.quantity > 0 )

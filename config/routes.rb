@@ -22,7 +22,9 @@ Rails.application.routes.draw do
   get '/index_user', to: 'cart_items#index_user'
   get '/shoppage', to: 'products#index_shop'
   get '/search', to: 'products#search'
+  post 'products/:id/index_cate', to: 'products#index_cate', as: 'index_cate'
   get 'products/:id/showtocart', to: 'products#showtocart', as: 'showtocart'
+  get 'shop_show',to: 'shops#show'
   #get '/showtocart', to: 'products#showtocart'
   resources :products
   resources :users

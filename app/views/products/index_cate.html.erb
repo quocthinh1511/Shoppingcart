@@ -1,7 +1,7 @@
 <% provide(:title, 'All products') %>
 <h1><span class= 'textp' ><i class="uil uil-book-open margin-rightt"></i></i>Books</span> </h1>
 <div class="btn-group" role="group" aria-label="Basic example">
- <%= link_to "All", products_path , class:"btn btn-primary margin-leftf" %>
+<button type="button" class="btn btn-primary  margin-leftf">All</button>
 <% Category.all.each do |cate|%>
   <%= button_to index_cate_path(cate), class:"btn btn-primary margin-leftf" do %>
 <%=cate.name%>
@@ -10,6 +10,7 @@
 </div>
 
 <ul class="users">
+<%if  @products.size !=0 %>
 <% @products.each do |product| %>
 <div class="card editcard" style="width: 18rem;">
   <div class="card-body">
@@ -30,4 +31,7 @@
   </div>
 </div>
 <% end %>
+<%else %>
+<div class = "center"> There no items of this gernes </div>
+<%end%>
 </ul>

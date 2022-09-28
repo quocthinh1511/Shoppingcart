@@ -33,7 +33,7 @@
             Edit shop
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><%= link_to "Your shop infor", current_shop , class:'dropdown-item ' %></li>
+            <li><%= link_to "Your shop infor",shop_show_path, class:'dropdown-item ' %></li>
            <li><%= link_to "Edit information", edit_shop_path(current_user.shop) ,class:'dropdown-item ' %></li>
          <li><%= link_to "Add product", new_product_path ,class:'dropdown-item ' %></li>
           <li><%= link_to "All your product", shoppage_path,class:'dropdown-item ' %></li>
@@ -65,11 +65,13 @@
         <input class="form-control me-2" name = "q" type="text" placeholder="Search" aria-label="Search">
       <button class= 'btn btn-outline-success' type='submit' >Search </button>
       </form>
-      <%= link_to  cart_path(current_order.order_items) do %>
-  <i class="uil uil-shopping-cart-alt cart">
-   <% if logged_in? %>
-  <span class='orderquantity'>
-     <%= current_order.order_items.size %>
-     </span>  <% end %></i> 
-    <% end %>
+      <% if current_user.present? %>
+        <%= link_to cart_path(current_order) do %>
+        <i class="uil uil-shopping-cart-alt cart">
+          <% if logged_in? %>
+          <span class='orderquantity'>
+            <%= current_order.order_items.size %>
+          </span> <% end %></i>
+        <% end %>
+      <% end %>
 </nav>

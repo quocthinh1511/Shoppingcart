@@ -8,6 +8,10 @@
     <p class="card-text">Description :<%=@product.description %> </p>
     <h5 class ='card-title'> Quantity Remain :<%=@product.quantity%> </h5>
     <h5 class ='card-title'> Price :<%=@product.price%> </h5>
+     <p>Genres: <% @product.categories.each do |cate|  %>
+    <%= ",#{cate.name}"%>
+     <%end%>
+     </p>
   </div>
   <%= form_for @order_item, method: :post do |f| %>
   <%= f.label :quantity %>

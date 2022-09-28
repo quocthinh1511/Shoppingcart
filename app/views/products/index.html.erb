@@ -1,14 +1,15 @@
 <% provide(:title, 'All products') %>
-<h1>Books</h1>
-<button type="button" class="btn btn-primary">Tất cả</button>
-<button type="button" class="btn btn-primary">Tiểu Thuyết</button>
-<button type="button" class="btn btn-primary">Trinh Thám</button>
-<button type="button" class="btn btn-primary">Tâm lí và giáo dục</button>
-<button type="button" class="btn btn-primary">Truyện tranh</button>
-<button type="button" class="btn btn-primary">Sách khoa học</button>
-<button type="button" class="btn btn-primary">Sách giáo khoa</button>
-<button type="button" class="btn btn-primary">Khác</button>
-<%= will_paginate %>
+<h1><span class= 'textp' ><i class="uil uil-book-open margin-rightt"></i></i>Books</span> </h1>
+<div class="btn-group" role="group" aria-label="Basic example">
+ <%= link_to "All", products_path , class:"btn btn-primary margin-leftf" %>
+<% Category.all.each do |cate|%>
+  <%= button_to index_cate_path(cate), class:"btn btn-primary margin-leftf" do %>
+<%=cate.name%>
+<%end%>
+<%end%>
+</div>
+
+<%= will_paginate %> 
 <ul class="users">
 <% Product.all.each do |product| %>
 <div class="card editcard" style="width: 18rem;">
@@ -17,7 +18,6 @@
     <h6 class="card-text"><%=product.name %> </h6>
     <p class ='card-text'> <%=product.author %> </p>
     <p class="card-text">Price :<%=product.price%></p>
-    <p class="card-text">Genres :<%=@category.find_by(id: product.category_id).name%></p>
     <p  class="card-text"><%= link_to "#{@shops.find_by(id: product.shop_id).name}" , shop_path(id: product.shop_id) ,class: "" %> </p>
       <% if current_user.role == 2 && product.shop_id == current_shop.id %>
            <%= link_to "Your product", shoppage_path ,class: "btn btn-primary" %>
@@ -32,4 +32,4 @@
 </div>
 <% end %>
 </ul>
-<%= will_paginate %>
+ <%= will_paginate %> 

@@ -4,6 +4,7 @@ class StaticPagesController < ApplicationController
             @micropost = current_user.microposts.build
             @feed_items = current_user.feed.paginate(page: params[:page])
           end 
+        @products = Product.where(sale: true)  
     end
   
     def help
@@ -11,6 +12,8 @@ class StaticPagesController < ApplicationController
     
     def about
     end
+    include SessionsHelper
+    include ShoppersHelper
     
   end
   

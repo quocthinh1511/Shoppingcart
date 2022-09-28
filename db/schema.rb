@@ -124,6 +124,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_25_070402) do
     t.bigint "category_id"
     t.string "author"
     t.string "name"
+    t.boolean "sale"
     t.string "price"
     t.integer "quantity"
     t.string "description"

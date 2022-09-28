@@ -15,8 +15,9 @@ class OrdersController < ApplicationController
     @order = current_order
     @order.update(order_params)
     current_order.shipping_id = @order.shipping_id
+    redirect_to cart_path
   end
-
+  
   def checkout
     @user = current_user
     @order = current_order

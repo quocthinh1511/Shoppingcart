@@ -1,7 +1,7 @@
 module ShoppersHelper
     def current_shop
         @user = User.find_by(id: session[:user_id])
-        if (@user && @user.role == 2)
+        if (@user.role == 2)
             @user.shop
         else 
             return nil

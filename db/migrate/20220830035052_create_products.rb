@@ -5,6 +5,7 @@ class CreateProducts < ActiveRecord::Migration[7.0]
       t.references :category
       t.string :author
       t.string :name 
+      t.boolean :sale
       t.string :price 
       t.integer :quantity 
       t.string :description 

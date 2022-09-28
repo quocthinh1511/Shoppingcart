@@ -9,8 +9,13 @@ class ProductsController < ApplicationController
 
     def index_shop    
         @products = current_shop.products
+        @shops = Shop.all
     end
-
+    def index_cate 
+        @category = Category.find_by(id: params[:id])
+        @products = @category.products
+        @shops = Shop.all
+    end
     def search
         @products = Product.where("name LIKE?", '%' + params[:q]+ '%')
     end
@@ -64,7 +69,7 @@ class ProductsController < ApplicationController
 
     private
         def product_params    
-            params.require(:product).permit(:name, :description, :image, :quantity ,:price,:author,:category_id)
+            params.require(:product).permit(:name, :description, :image, :quantity ,:price,:author,:sale, category_ids: [])
         end
         def set_categories 
             @category = Category.all.order(:name)

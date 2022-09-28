@@ -24,7 +24,7 @@ body {
         clear:both !important;
     }
     .center {
-    text-align: center;
+    text-align: center!important;
     }
     .center h1 {
     margin-bottom: 10px;
@@ -234,6 +234,7 @@ aside {
   .marketing { 
     height: 100%;
     width: 100%;
+    text-align: center!important;
   }
   .image {
    
@@ -820,9 +821,9 @@ overflow: hidden;
     background-position: center!important;
 }
 .orderquantity{
-    background-color: red;
+    background-color: rgb(244, 191, 87);
     text-decoration: none!important;
-    border-radius: 0.6!important;
+    border-radius: 20px!important;
     font-size:20px;
     margin-bottom: 5px!important;
 }
@@ -913,4 +914,31 @@ margin-bottom: 40px!important;
 }
 .30px{
     font-size:500px!important;
+}
+.background_white{
+    border-radius: 0.8;
+    width: 300px;
+}
+.salehot{
+    text-align: center;
+    width: 300px!important;
+    height: 81%!important;
+    display: flex!important;
+    justify-content: center!important;
+    align-items: center!important;
+}
+.hotfont{
+    color:#fff;
+    font-size: 30px;
+    text-align: center;
+    margin-top: 180px;
+    font-weight: 400;
+    color:rgb(232, 255, 104);
+    font-family: cursive;
+}
+.inline-block {
+    display: flex!important;
+}
+.buttonn{
+    width: 100px!important;
 }

@@ -3,27 +3,31 @@
  <img src="https://cutewallpaper.org/21/open-books-wallpaper/Free-download-Old-Books-Wallpaper-Open-Book-Wallpaper-.jpg" class="imgpro" alt="..."> </img>
 <div class="col-md-6 col-md-offset-3 lefttt">
 <%= form_with(model: @product, local:true ) do |f| %>
-<i class="uil uil-tag-alt"></i>
-<%= f.label :name %>
-<%= f.text_field :name, class: 'form-control' %>
-<i class="uil uil-user-circle"></i>
-<%= f.label :author %>
-<%= f.text_field :author, class: 'form-control' %>
-<i class="uil uil-pen"></i>
-<%= f.label :description %>
-<%= f.text_field :description, class: 'form-control' %>
-<i class="uil uil-calculator"></i>
-<%= f.label :quantity %>
-<%= f.text_field :quantity, class: 'form-control' %>
-<i class="uil uil-dollar-sign-alt"></i>
-<%= f.label :price %>
-<%= f.text_field :price, class: 'form-control' %>
-<i class="uil uil-list-ul"></i>
-<%= f.label :category %>
-<%= f.collection_select :category_id, Category.all, :id, :name, prompt: "Select Category", class: "form-control center" %>
-<i class="uil uil-image"></i>
-<%= f.label :image %>
-<%= f.file_field :image, class: 'form-control' %>
-<%= f.submit "Create My Product",class: "btn btn-primary" %>
-<% end %>
-</div>
+      <i class="uil uil-tag-alt"></i>
+            <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+      <i class="uil uil-user-circle"></i>
+      <%= f.label :author %>
+      <%= f.text_field :author, class: 'form-control' %>
+      <i class="uil uil-pen"></i>
+      <%= f.label :description %>
+      <%= f.text_field :description, class: 'form-control' %>
+      <i class="uil uil-calculator"></i>
+      <%= f.label :quantity %>
+      <%= f.text_field :quantity, class: 'form-control' %>
+      <i class="uil uil-dollar-sign-alt"></i>
+      <%= f.label :price %>
+      <%= f.text_field :price, class: 'form-control' %>
+      <i class="uil uil-list-ul"></i>
+      <%= f.label :categories %>
+            <%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |b| %>
+            <% b.label(class: "d-flex me-2") {b.label(class: "input-group-text input_group_text") {b.check_box(class: "")} + b.label(class:"background_white margin-leftf") {b.text} } %>
+      <% end %>
+<%# <%= f.collection_select :category_ids, Category.all, :id, :name,{}, {class: 'form-control select2', multiple:true} %> 
+      <%# #prompt: "Select Category", class: "form-control center" %#> %>
+      <i class="uil uil-image"></i>
+      <%= f.label :image %>
+      <%= f.file_field :image, class: 'form-control' %>
+      <%= f.submit "Create My Product",class: "btn btn-primary" %>
+      <% end %>
+      </div>

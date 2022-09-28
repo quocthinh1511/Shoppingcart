@@ -31,7 +31,7 @@ class OrdersController < ApplicationController
         CartItem.create(newAtrs(@cart_session,order_item))
         #  Shop.all.each do |i|
         # if i.id = order_item.product.shop_id
-            i.send_shop_email
+        #  i.send_shop_email
         # end
         # end
         # Decrease quantity product

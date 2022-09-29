@@ -18,8 +18,8 @@
     <h6 class="card-text"><%=product.name %> </h6>
     <p class ='card-text'> <%=product.author %> </p>
     <p class="card-text">Price :<%=product.price%></p>
-    <p  class="card-text"><%= link_to "#{@shops.find_by(id: product.shop_id).name}" , shop_path(id: product.shop_id) ,class: "" %> </p>
-      <% if current_user.role == 2 && product.shop_id == current_shop.id %>
+    <p  class="card-text"><%= link_to "#{@shops.find_by(id: product.shop_id).name}" , shop_showw_path(@shops.find_by(id: product.shop_id)),class: "" %> </p>
+      <% if current_user.role == 2 && !current_shop.nil? && product.shop_id == current_shop.id %>
            <%= link_to "Your product", shoppage_path ,class: "btn btn-primary" %>
       <%else%>
     <% if product.quantity > 0 %>

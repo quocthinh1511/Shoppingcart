@@ -3,8 +3,7 @@ class CartItemsController < ApplicationController
       @products = Product.where(shop_id: current_shop.id)
       @cart_items = CartItem.where(product_id: @products.ids)
     end
-    def index_user 
-        @product = Product.find_by(id: params[:id])
+    def index_user
         @cart_sesisons = CartSession.where(user_id: session[:user_id])
         @cart_items = CartItem.where(cart_session_id: @cart_sesisons.ids)
     end

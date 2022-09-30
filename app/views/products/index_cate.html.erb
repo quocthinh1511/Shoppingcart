@@ -1,7 +1,7 @@
 <% provide(:title, 'All products') %>
 <h1><span class= 'textp' ><i class="uil uil-book-open margin-rightt"></i></i>Books</span> </h1>
 <div class="btn-group" role="group" aria-label="Basic example">
-<button type="button" class="btn btn-primary  margin-leftf">All</button>
+ <%= link_to "All", products_path , class:"btn btn-primary margin-leftf" %>
 <% Category.all.each do |cate|%>
   <%= button_to index_cate_path(cate), class:"btn btn-primary margin-leftf" do %>
 <%=cate.name%>
@@ -19,7 +19,7 @@
     <p class ='card-text'> <%=product.author %> </p>
     <p class="card-text">Price :<%=product.price%></p>
     <p  class="card-text"><%= link_to "#{@shops.find_by(id: product.shop_id).name}" , shop_path(id: product.shop_id) ,class: "" %> </p>
-      <% if current_user.role == 2 && product.shop_id == current_shop.id %>
+      <% if current_user.role == 2 && !current_shop.nil? && product.shop_id == current_shop.id %>
            <%= link_to "Your product", shoppage_path ,class: "btn btn-primary" %>
       <%else%>
     <% if product.quantity > 0 %>

@@ -236,14 +236,15 @@ aside {
     width: 100%;
     text-align: center!important;
   }
-  .image {
-   
-  }
+
   .slide-wrap{
     text-align: center;
   }
   .margin-top30px{ 
     margin-top:30px;
+  }
+   .margin-top50px{ 
+    margin-top:50px;
   }
   .right {
     right:0;
@@ -345,7 +346,7 @@ color: rgb(243, 211, 98)!important;
     }
   }
 /* imghover*/
-@import url(https://fonts.googleapis.com/css?family=Raleway:400,200,300,800);
+
 figure.snip0016 {
   font-family: 'Raleway', Arial, sans-serif;
   color: #fff;
@@ -485,7 +486,7 @@ figure.snip0016:hover figcaption::before {
 }
 .w-100 {
     width: 100%!important;
-    height: 200px!important;
+    height: 200px;
 }
 .card {
     
@@ -644,6 +645,7 @@ footer {
         background-size: cover;
         top:0;
         left:0;
+        position: relative;
      
     }
     .pic1 {
@@ -762,7 +764,7 @@ overflow: hidden;
     height: 200px;
 }
 .userback {
-    background-image: url(https://img5.thuthuatphanmem.vn/uploads/2021/08/25/hinh-nen-khong-gian-may-tinh-4k_084703252.jpg);
+    background-image: url(https://khoinguonsangtao.vn/wp-content/uploads/2021/12/download-windows-10-wallpaper-1.jpg);
     background-size: 100%;
     background-position: center;
     color:white;
@@ -903,9 +905,7 @@ form{
     background-position-x: 95%;
     background-position-y: center;
 }
-.homeback{
-    background-image: url();
-}
+
 .margin-leftf{
     margin-left: 20px;
 }
@@ -921,11 +921,16 @@ margin-bottom: 40px!important;
 }
 .salehot{
     text-align: center;
-    width: 300px!important;
-    height: 81%!important;
+    width: 200px!important;
+    height: 75%!important;
     display: flex!important;
     justify-content: center!important;
     align-items: center!important;
+    margin-top: 15px!important;
+    position: absolute;
+    right:0; 
+    left:0;
+
 }
 .hotfont{
     color:#fff;
@@ -935,10 +940,32 @@ margin-bottom: 40px!important;
     font-weight: 400;
     color:rgb(232, 255, 104);
     font-family: cursive;
+  
 }
 .inline-block {
     display: flex!important;
 }
 .buttonn{
     width: 100px!important;
+}
+.card-title {
+    font-size: 15px!important;
+}
+.imguser {  
+    font-size: 10px!important;
+}
+.margin-leftff {
+    margin-left: 100px!important;
+}
+.textnewzz{
+    font-size: 40px;
+    background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXcyJcHQNmAU6VqSW00e6Wrr3Z8lbmiPsAvWQ9nAJmH2kpu0IuSXJFCCt8c2fG7xvVRkA&usqp=CAU);
+    -webkit-background-clip: text;
+    color:transparent;
+    background-position: center;
+    background-size: 100%;
+    font-weight: 700;
+}
+.floatright{
+    left: 0 !important;
 }

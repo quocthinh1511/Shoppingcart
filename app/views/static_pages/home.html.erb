@@ -1,6 +1,5 @@
-
 <div class="center jumbotron homeback">
- <span class= 'textnew' >Welcome to our BookStore </span>
+<h1><span class= 'textp' ><i class="uil uil-book-open margin-rightt"></i></i>Welcome to our BookStore</span> </h1>
 <h2>
 Choose your favourite book 
 </h2>
@@ -8,8 +7,7 @@ Choose your favourite book
 
  <% if logged_in? %>
  <div>
- <img src="https://i.pinimg.com/originals/1e/3e/37/1e3e3738d81b9db4f6b6505b236a996a.gif" class="imgsize" alt="...">
-  
+  <%= link_to "Get Voucher", indexvoucher_path ,class:"btn btn-primary" %>
   </div>
   <%else%>
   <%= link_to "Sign up for convenient use!", signup_path , class: "btn btn-lg btn-primary" %>
@@ -40,43 +38,41 @@ Choose your favourite book
   </div>
    </div>
   </div>
-
-  <div class='bestsell center'>
- <div class ='margintop'> <span class= 'textnewww ' > Bestseller Books</span> </div>
-<div class= 'marketing '>
-<% if @products.size != 0%>
-<% @products.each do |product| %>
-<div class="card center widthcard salehot" style="width: 18rem;">
-  <%= image_tag(product.image.url, :alt => "rss feed",class: 'img') %>
+<%# Best sell book %>
+  <div class='bestsell center row'>
+ <div class ='margintop'> <span class= 'textnewww'> Bestseller Books</span> </div>
+   <% if @products.size != 0%>
+    <% @products.each do |product| %>
+<div class="card salehot" style="width: 18rem;">
   <div class="card-body">
+    <%= image_tag(product.image.url, :alt => "rss feed",class: 'img') %>
     <h5 class="card-title"><%=product.name %> </h5>
     <h5 class ='card-title'> <%=product.author %> </h5>
     <h5 class ='card-title'> Quantity :<%=product.quantity%> </h5>
     <h5 class ='card-title'> Price :<%=product.price%> </h5>
     <% if !current_user.nil?%>
-    <% if current_user.role == 2 && product.shop_id == current_shop.id %>
+       <% if current_user.role == 2 && !current_shop.nil? && product.shop_id == current_shop.id %>
            <%= link_to "Your product", shoppage_path ,class: "btn btn-primary" %>
+      <%else%>
+           <% if product.quantity > 0 %>
+           <%= link_to "View", showtocart_path(product),class: "btn btn-primary" %>
+           <%else%>
+          <div class='soldout'>Sold out!</div>
+          <%end%>
+      <% end %>
     <%else%>
-    <% if product.quantity > 0 %>
-        <%= link_to "View", showtocart_path(product),class: "btn btn-primary" %>
-    <%else%>
-        <div class='soldout'>Sold out!</div>
-    <%end%>
-    <% end %>
-    <%else%>
-   <%= link_to "Log in to view", login_path, class:"btn btn-primary" %>
-     <%end%>
+      <%= link_to "Log in to view", login_path, class:"btn btn-primary" %>
+   <%end%>
+    </div>
   </div>
+  <%end%>
+  <%else%>
+  <div class = 'hotfont'>
+    Best Seller Books haven't been updated yet !
+  </div>
+   <%end%>
 </div>
-<%end%>
-<%else%>
-<div class = 'hotfont'>
-Best Seller Books haven't been updated yet !
-</div>
-<%end%>
-</div>
-</div>
-
+<%# Best sell book %>
 <section class="page-section portfolio " id="portfolio">
             <div class="container ">
                 <!-- Portfolio Section Heading-->
@@ -227,3 +223,16 @@ Best Seller Books haven't been updated yet !
 </div>
 </div>
 
+<script>var swiper = new Swiper('.blog-slider', {
+      spaceBetween: 30,
+      effect: 'fade',
+      loop: true,
+      mousewheel: {
+        invert: false,
+      },
+      // autoHeight: true,
+      pagination: {
+        el: '.blog-slider__pagination',
+        clickable: true,
+      }
+    });</script>

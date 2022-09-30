@@ -3,6 +3,7 @@ class CreateOrders < ActiveRecord::Migration[7.0]
     create_table :orders do |t|
       t.references :user
       t.references :shipping
+      t.string :voucher
       t.integer :sum
       t.timestamps
     end

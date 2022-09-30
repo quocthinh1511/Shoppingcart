@@ -46,10 +46,10 @@
                                     <td><%= order.quantity %></td>
                                     <td><%= order.unit_price %></td>
                                     <td><%= order.created_at%> 
-                                     <% if current_user.role ==2  %>
+                                
                                 <%= button_to "delete", order, method: :delete,
                               data: { confirm: "You sure?" } %>
-                              <% end %></td>
+                             </td>
                                 <td><%= order.updated_at %></td>
                                     <td><i class="fa fa-ellipsis-h text-black-50"></i></td>         
                                 </tr>
@@ -57,6 +57,17 @@
                                  <% end %>
                             </tbody>
                         </table>
+                      
+
+
+
+                    <%@cart_sesisons.all.each do |i|%> 
+                      <ul class="list-group">
+                    <li class="list-group-item">
+                   <%= "id: #{i.id} "%>
+                   <%= "Total: #{i.sum}"%></li>
+                   </ul>
+                   <%end%>
                     </div>
                 </div>
             </div>

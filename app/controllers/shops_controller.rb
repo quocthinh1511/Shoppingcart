@@ -2,8 +2,8 @@ class ShopsController < ApplicationController
     before_action :logged_in_user, only: [:create, :destroy]
     
     def show 
-        @shop = current_shop
-        @products = current_shop.products
+        @shop = Shop.find_by(id: params[:id])
+        @products =@shop.products
         #@product= Product.find(params[:id])
     end
     def new

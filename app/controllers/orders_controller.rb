@@ -51,7 +51,7 @@ class OrdersController < ApplicationController
     end
   private
   def order_params    
-    params.require(:order).permit(:shipping_id)
+    params.require(:order).permit(:shipping_id, :voucher)
   end
 
   def logged_in_user

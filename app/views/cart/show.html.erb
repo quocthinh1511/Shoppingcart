@@ -37,7 +37,7 @@
                     <hr>
                     <div class="row">
                         <div class="col" style="padding-left:0;"><%= "#{current_order.order_items.size} Items"  %></div>
-                        <div class="col text-right"><%= "Total: #{number_to_currency current_order.sum}$" %></div>
+                        <div class="col text-right"><%= "Total: #{number_to_currency current_order.sum1}" %></div>
                     </div>
     
                         <p>SHIPPING</p>
@@ -46,8 +46,10 @@
                        <%= f.submit "Update",class: "" %>
                        <%end%>
                         <p>GIVE CODE</p>
-                        <input id="code" placeholder="Enter your code"> </input>
-                
+                        <%= form_for @order = current_order, remote:true, method: :put do |f| %>
+                        <%= f.text_field :voucher, class: 'form-control',placeholder: "Enter code"  %>
+                        <%= f.submit "Update",class: "" %>
+                        <%end%>
                     <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
                         <div class="col">TOTAL PRICE</div>
                         <div class="col text-right"> <%="#{current_order.sum}$" %> </div>

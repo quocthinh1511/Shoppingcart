@@ -1,0 +1,20 @@
+<%if current_user.admin%>
+<%= form_with url: voucher_path, method: :post do |f| %>
+<i class="uil uil-user"></i>
+<%= f.label :name %>
+<%= f.text_field :name, class: 'form-control sizee',placeholder: "Enter code" %>
+<i class="uil uil-fast-mail"></i>
+<%= f.label :per %>
+<%= f.number_field :per, class: 'form-control sizee',placeholder: "Enter percentage" %>
+<%= f.submit "Create voucher",class: "btn btn-primary sizee" %>
+<%end%>
+<%end%>
+<% @vouchers.all.each do |vou| %>
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Code: <%= vou.name %></h5>
+    <p class="card-text">Up to: <%= vou.per %></p>
+   <%link_to 'Shop now!', products_path, class:'btn btn-primary'%>
+  </div>
+</div>
+<% end %>

@@ -57,6 +57,17 @@
                                  <% end %>
                             </tbody>
                         </table>
+                      
+
+
+
+                    <%@cart_sesisons.all.each do |i|%> 
+                      <ul class="list-group">
+                    <li class="list-group-item">
+                   <%= "id: #{i.id} "%>
+                   <%= "Total: #{i.sum}"%></li>
+                   </ul>
+                   <%end%>
                     </div>
                 </div>
             </div>

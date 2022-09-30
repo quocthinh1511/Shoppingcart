@@ -236,14 +236,15 @@ aside {
     width: 100%;
     text-align: center!important;
   }
-  .image {
-   
-  }
+
   .slide-wrap{
     text-align: center;
   }
   .margin-top30px{ 
     margin-top:30px;
+  }
+   .margin-top50px{ 
+    margin-top:50px;
   }
   .right {
     right:0;
@@ -485,7 +486,7 @@ figure.snip0016:hover figcaption::before {
 }
 .w-100 {
     width: 100%!important;
-    height: 200px!important;
+    height: 200px;
 }
 .card {
     
@@ -904,9 +905,7 @@ form{
     background-position-x: 95%;
     background-position-y: center;
 }
-.homeback{
-    background-image: url();
-}
+
 .margin-leftf{
     margin-left: 20px;
 }
@@ -966,4 +965,7 @@ margin-bottom: 40px!important;
     background-position: center;
     background-size: 100%;
     font-weight: 700;
+}
+.floatright{
+    left: 0 !important;
 }

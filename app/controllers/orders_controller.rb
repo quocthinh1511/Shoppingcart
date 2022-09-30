@@ -24,16 +24,16 @@ class OrdersController < ApplicationController
     @order.user_id = session[:user_id]
     @cart_session = CartSession.new(session_param(@order))
     if @cart_session.save
-      #@user.send_order_email
+      @user.send_order_email
       @order.order_items.each do |order_item|
         # Copy CartItem to OrderItem
      
         CartItem.create(newAtrs(@cart_session,order_item))
-        #  Shop.all.each do |i|
-        # if i.id = order_item.product.shop_id
-        #  i.send_shop_email
-        # end
-        # end
+          Shop.all.each do |i|
+         if i.id = order_item.product.shop_id
+         i.send_shop_email
+        end
+        end
         # Decrease quantity product
         Product.all.each do |product|
           if (product.name == order_item.product.name && order_item.quantity > 0 )

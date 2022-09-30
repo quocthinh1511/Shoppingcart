@@ -1,4 +1,6 @@
-
+<%if @products.size == 0%>
+<div> No items can be found </div>
+<%else%>
 <% @products.each do |product| %>
 <div class="card editcard" style="width: 18rem;">
   <div class="card-body">
@@ -23,6 +25,7 @@
        </div>
     </div>
     <% end %>
+    <%end%>
  
 
 

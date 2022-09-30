@@ -3,7 +3,7 @@
 <h1><span class= 'texteditshop lefttt' > <i class="uil uil-shopping-bag margin-rightt"></i>Update your Shop's information  </span> </h1>
  <img src="https://png.pngtree.com/png-vector/20190318/ourlarge/pngtree-the-elements-of-lovely-planar-cartoon-street-view-bookstore-png-image_858422.jpg" class="imgshop" alt="..."> </img>
 <div class="col-md-6 col-md-offset-3 lefttt">
-<%= form_with(model: @shop,  local:true) do |f| %>
+<%= form_with url: edit_shop_path, method: :patch do |f| %>
 <i class="uil uil-user-times"></i>
 <%= f.label :name %>
 <%= f.text_field :name, class: 'form-control', placeholder: "Enter your new name shop"  %>

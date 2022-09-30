@@ -2,8 +2,8 @@ class ShopsController < ApplicationController
     before_action :logged_in_user, only: [:create, :destroy]
     
     def show 
-        @shop = Shop.find_by(id: params[:id])
-        @products =@shop.products
+        @shop = Shop.find_by(id: current_shop.id)
+        @products = @shop.products
         #@product= Product.find(params[:id])
     end
     def new
@@ -21,7 +21,6 @@ class ShopsController < ApplicationController
         @shop.user_id = session[:user_id]
         if @shop.save
             @user.update_attribute(:role, 2)
-
             flash[:success] = 'Create shop successfully!'
             redirect_to root_path 
         else
@@ -38,12 +37,12 @@ class ShopsController < ApplicationController
         @shop = Shop.find_by(id: params[:id])
         if @shop.update(shop_params)
             # Handle a successful update.
-            redirect_to @shop
+            redirect_to root_path
         else
             render 'edit'
         end
     end
-    
+
     def destroy
         Shop.find(params[:id]).destroy
         flash[:success] = " Shop deleted"

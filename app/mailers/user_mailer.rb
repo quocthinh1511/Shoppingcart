@@ -24,7 +24,7 @@ class UserMailer < ApplicationMailer
     @user = user
     @cart_sesison = CartSession.last
     @cart_items = CartItem.where(cart_session_id: @cart_sesison.id)
-    mail to: "to@example.org"
+    mail to: @user.email
   end
   def shop(shop)
     @shop = shop

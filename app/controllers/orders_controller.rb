@@ -38,7 +38,7 @@ class OrdersController < ApplicationController
           Shop.all.each do |i|
             if i.id = order_item.product.shop_id
             i.send_shop_email
-          end
+            end
           end
         # Decrease quantity product
           Product.all.each do |product|

@@ -25,9 +25,10 @@ Rails.application.routes.draw do
   post 'products/:id/index_cate', to: 'products#index_cate', as: 'index_cate'
   get 'products/:id/showtocart', to: 'products#showtocart', as: 'showtocart'
   get 'shop_show',to: 'shops#show'
-  get 'shopss/:id/show', to: 'shops#show', as: 'shop_showw'
+  get 'shops/:id/show_to_product', to: 'shops#show_to_product', as: 'shop_showw'
   get "/indexvoucher", to: 'voucher#index'
   post '/voucher', to: 'voucher#create'
+  put 'shops/:id/update', to: 'shops#update', as: 'update_shop'
   #get '/showtocart', to: 'products#showtocart'
   resources :products
   resources :vouchers

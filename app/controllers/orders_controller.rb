@@ -23,32 +23,60 @@ class OrdersController < ApplicationController
     @order = current_order
     @order.user_id = session[:user_id]
     @cart_session = CartSession.new(session_param(@order))
-    if @cart_session.save
-      @user.send_order_email
-      @order.order_items.each do |order_item|
+    @all_items = @order.order_items
+
+    if check(@all_items) == true
+    
+      if @cart_session.save
+      # Send mail for order
+        @user.send_order_email
+        @order.order_items.each do |order_item|
         # Copy CartItem to OrderItem
      
-        CartItem.create(newAtrs(@cart_session,order_item))
+          CartItem.create(newAtrs(@cart_session,order_item))
+      # Mail for shop
           Shop.all.each do |i|
-         if i.id = order_item.product.shop_id
-         i.send_shop_email
-        end
-        end
+            if i.id = order_item.product.shop_id
+            i.send_shop_email
+          end
+          end
         # Decrease quantity product
-        Product.all.each do |product|
-          if (product.name == order_item.product.name && order_item.quantity > 0 )
-            number = product.quantity - order_item.quantity
-            product.update_attribute(:quantity, number)
+          Product.all.each do |product|
+            if (product.name == order_item.product.name && order_item.quantity > 0 )
+              number = product.quantity - order_item.quantity
+              product.update_attribute(:quantity, number)
+            end
           end
         end
+        @order.destroy
+        flash[:success] = "Order successfully"
+        redirect_to root_path
+      else 
+        flash[:danger] = "Order fail"  
       end
-      @order.destroy
-      flash[:success] = "Order successfully"
-      redirect_to root_path
     else 
-      flash[:danger] = "Order fail"  
+      flash[:danger] = 'Quantity Error, Please add again!'
+      redirect_to root_path
     end
+  end
+
+    def check(order_item)
+      @order = current_order
+      for i in (0...order_item.size)
+        @product = Product.find_by(id: order_item[i].product_id)
+        all = order_item[i].quantity
+        for j in (i+1...order_item.size)
+            if order_item[i].product_id == order_item[j].product_id
+              all+= order_item[j].quantity
+            end
+        end
+          if all > @product.quantity
+            return false
+          end
+      end
+        return true 
     end
+    
   private
   def order_params    
     params.require(:order).permit(:shipping_id, :voucher)

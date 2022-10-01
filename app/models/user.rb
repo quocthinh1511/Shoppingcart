@@ -14,6 +14,7 @@ class User < ApplicationRecord
     has_secure_password
     validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
     mount_uploader :avatar, ImageUploader
+
     def User.digest(string)
         cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
         BCrypt::Engine.cost
@@ -66,6 +67,7 @@ class User < ApplicationRecord
     def send_order_email
         UserMailer.order(self).deliver_later
     end
+
     private 
     def downcase_email
         self.email = email.downcase
@@ -80,6 +82,7 @@ class User < ApplicationRecord
         self.order_token = User.new_token
         self.order_digest = User.digest(order_token)
     end
+    
     def password_reset_expired?
         reset_sent_at < 2.hours.ago
     end

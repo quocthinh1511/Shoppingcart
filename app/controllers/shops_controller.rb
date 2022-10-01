@@ -4,15 +4,20 @@ class ShopsController < ApplicationController
     def show 
         @shop = Shop.find_by(id: current_shop.id)
         @products = @shop.products
-        #@product= Product.find(params[:id])
     end
+
+    def show_to_product
+        @shop = Shop.find_by(id: params[:id])
+        @products = @shop.products
+    end
+
     def new
         @shop = Shop.new
     end 
+
     def index
       @shop = Shop.find_by(id: params[:id])
       @shops = Shop.all
- 
     end
 
     def create
@@ -37,9 +42,10 @@ class ShopsController < ApplicationController
         @shop = Shop.find_by(id: params[:id])
         if @shop.update(shop_params)
             # Handle a successful update.
+            flash[:success] = 'Update shop successfully'
             redirect_to root_path
         else
-            render 'edit'
+            redirect_to @shop
         end
     end
 
@@ -50,9 +56,11 @@ class ShopsController < ApplicationController
     end
    
     private
+
         def shop_params
-            params.require(:shop).permit(:name, :description, :avatar, :phone ,:tax_code, :avatar)
+            params.require(:shop).permit(:name, :description, :phone ,:tax_code, :avatar)
         end
+
         def logged_in_user
             unless logged_in?
             flash[:danger] = "Please log in."

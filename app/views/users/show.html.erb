@@ -21,7 +21,7 @@
               <% if @user.avatar.present?%>
               <%= image_tag(@user.avatar.url, :alt => "rss feed",class: 'img') %>
               <% else%>
-               <%=  gravatar_for(@user) %>
+               <%= gravatar_for(@user) %>
               <% end%>     
               </div>
               <div class="flex-grow-1 ms-3 white ">

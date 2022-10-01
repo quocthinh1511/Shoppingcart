@@ -5,7 +5,6 @@ You have a new order
 </p>
 <h3> Total items <%=@cart_items.size%></h3>
 <h4> Your order customer <h4>
-<%= @shop.name %>
 <% @cart_items.each do |order| %>
   <tr>
  <td> Book's name: <%= Product.all.find_by(id: order.product_id).name%></td>

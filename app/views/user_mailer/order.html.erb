@@ -4,14 +4,9 @@
 Thanks for your order
 </p>
 <h4> Your order confirmation </h4>
+<h3> Your customer name:<%=@user.name%> </h3>
 <h3> Total items <%=@cart_items.size%></h3>
-   
   <table>
-  <tr>
-    <th>Name</th>
-    <th>quantity <th>
-    <th>Total price</th>
-  </tr>
    <% @cart_items.each do |order| %>
   <tr>
  <td> Book's name: <%= Product.all.find_by(id: order.product_id).name%></td>
@@ -20,7 +15,8 @@ Thanks for your order
      <td>quantity <%=order.quantity%></td>
   </tr>
   <tr> <td> Total: <%=order.total_price%> </td> </tr>
-     <% end %>  
+   <% end %>  
+     <td> Finally Total: <%= CartSession.last.sum %></td>
 </table>     
                    
    

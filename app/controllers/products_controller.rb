@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController    
     before_action :set_categories
     before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
+
     def index
         @products = Product.paginate(page: params[:page]) 
         @order_item = current_order.order_items.new
@@ -37,6 +38,7 @@ class ProductsController < ApplicationController
         flash[:success] = "Product deleted"
         redirect_to shoppage_path
     end
+    
     def create
         @product = current_shop.products.build(product_params)
         if @product.save

@@ -36,7 +36,7 @@ class OrdersController < ApplicationController
           CartItem.create(newAtrs(@cart_session,order_item))
       # Mail for shop
           Shop.all.each do |i|
-            if i.id = order_item.product.shop_id
+            if i.name == order_item.product.shop.name
             i.send_shop_email
             end
           end

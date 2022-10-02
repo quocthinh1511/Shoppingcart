@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
     before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
 
     def index
-        @products = Product.paginate(page: params[:page]) 
+        @products = Product.paginate(page: params[:page], :per_page => 10) 
         @order_item = current_order.order_items.new
         @shops = Shop.all
     end

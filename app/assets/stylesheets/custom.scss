@@ -177,6 +177,9 @@ aside {
 .margintop{
     margin-top: 40px!important;
 }
+.margintop30px{
+    margin-top: 30px!important;
+}
 .form-control{
     margin-top: 10px;
 }
@@ -968,4 +971,10 @@ margin-bottom: 40px!important;
 }
 .floatright{
     left: 0 !important;
+}
+.card-body {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    min-height: 400px!important;
 }

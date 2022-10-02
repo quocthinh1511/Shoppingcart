@@ -11,9 +11,10 @@
 <%end%>
 </div>
 <%# Show product %>
-<%= will_paginate %> 
+<div class= "margintop30px" >
+  <%= will_paginate %>  </div>
 <ul class="users">
-<% Product.all.each do |product| %>
+<% @products.each do |product| %>
 <div class="card editcard" style="width: 18rem;">
   <div class="card-body">
    <%= image_tag(product.image.url, :alt => "rss feed",class: 'img') %>
@@ -34,4 +35,5 @@
 </div>
 <% end %>
 </ul>
- <%= will_paginate %> 
+<div  class='margintop30px'>
+  <%= will_paginate %>  </div>

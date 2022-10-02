@@ -61,11 +61,11 @@
       </li>
       <% end %>
       </ul>
+       <% if current_user.present? %>
       <form class="d-flex" action = "/search">
         <input class="form-control me-2" name = "q" type="text" placeholder="Search" aria-label="Search">
       <button class= 'btn btn-outline-success' type='submit' >Search </button>
       </form>
-      <% if current_user.present? %>
         <%= link_to cart_path(current_order) do %>
         <i class="uil uil-shopping-cart-alt cart">
           <% if logged_in? %>

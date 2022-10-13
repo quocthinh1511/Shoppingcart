@@ -1,0 +1,55 @@
+<% provide(:title, @shop.name) %>
+
+<div class="row">
+<div>
+<ul class="nav margintop">
+  <li class="nav-item">
+  <button type="button" class="btn btn-outline-success"><a class="nav-link" href='#linkk'>Shop details</a> </button>
+
+   </li>
+  <li class="nav-item">
+  <button type="button" class="btn btn-outline-info"><a class="nav-link" href="#productc">Shop products</a> </button>
+    
+  </li>
+  <li class="nav-item">
+  <button type="button" class="btn btn-outline-warning">  <a class="nav-link" href="#">Voucher</a></button>
+  
+</ul>
+<h1><i class="uil uil-comment-info"></i> Shop Information </h1>
+<%= image_tag(@shop.avatar.url, :alt => "rss feed",class: 'img') %>
+</div>
+<div id='linkk'>
+<ul class="list-group back">
+  <li class="list-group-item">Name :<%= @shop.name %></li>
+  <li class="list-group-item">Description :<%= @shop.description %> </li>
+  <li class="list-group-item">Phone :<%= @shop.phone %> </li>
+  <li class="list-group-item">Tax code :<%= @shop.tax_code%> </li>
+</ul>
+</div>
+<h1 id ='productc'> <%= "#{@shop.name}'s Products" %> </h1>
+<% @products.each do |product| %>
+<div class="card editcard" style="width: 18rem;">
+  <div class="card-body">
+   <%= image_tag(product.image.url, :alt => "rss feed",class: 'img') %>
+    <h5 class="card-text"><%=product.name %> </h5>
+    <p class ='card-text'> <%=product.author %> </p>
+     <p class="card-text"><%=product.description %> </p>
+      <p class ='card-text'> Quantity :<%=product.quantity%> </p>
+    <p class="card-text">Price :<%=product.price%></p>
+    <%# <p class="card-text">Genres :<%=@category.find_by(id: product.category_id).name%></p> 
+ <% if current_user.role == 2 && !current_shop.nil? &&product.shop_id == current_shop.id %>
+           <%= link_to "Your product", shoppage_path ,class: "btn btn-primary" %>
+      <%else%>
+    <% if product.quantity > 0 %>
+        <%= link_to "View", showtocart_path(product),class: "btn btn-primary" %>
+    <%else%>
+        <div class='soldout'>Sold out!</div>
+    <%end%>
+  <% end %>
+
+  </div>
+</div>
+
+<% end %>
+
+

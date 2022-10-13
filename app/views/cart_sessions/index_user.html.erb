@@ -1,0 +1,62 @@
+
+  <div class="container mt-5">
+        <div class="d-flex justify-content-center row">
+            <div class="col-md-10">
+                <div class="rounded">
+                    <div class="table-responsive table-borderless">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">
+                                        <div class="toggle-btn">
+                                            <div class="inner-circle"></div>
+                                        </div>
+                                    </th>
+                                    <th>Order</th>
+                                    <th>Customer Name</th>
+                                    <th>status</th>
+                                    <th>Total</th>
+                                    <th>Created</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-body">
+                        
+                          <% @cart_sessions.each do |order| %>
+                                <tr class="cell-1">
+                                    <td class="text-center">
+                                        <div class="toggle-btn">
+                                            <div class="inner-circle"></div>
+                                        </div>
+                                    </td>
+                                     <%  if order.sum =nil %>
+                                    <%'There are no orders here. Lets shopping'%>
+                                    <%else%>
+                                    <td><%=order.id%></td>
+                                    <td><%=order.user.name%></td>
+                                    <td><span class="badge badge-danger black"> 
+                                    <% if order.order_status.nil?%>
+                                            <%= "Processing" %>   
+                                    <%else%>
+                                          <%= order.order_status %>             
+                                    <%end%>
+                                    </span></td>
+                                    <td><%= order.sum %></td>
+                                    <td><%= order.created_at%> 
+                                     <% if current_user.role ==2  %>
+                                <%= button_to "delete", order, method: :delete,
+                              data: { confirm: "You sure?" } %>
+                              <% end %></td>
+                                    <td><i class="fa fa-ellipsis-h text-black-50"></i></td>         
+                                </tr>
+                                 <% end %>
+                                 <% end %>
+                            </tbody>
+                        </table>
+                    </div>
+               
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>

@@ -1,0 +1,68 @@
+
+  <div class="cardd">
+            <div class="row">
+                <div class="col-md-8 cartt">
+                    <div class="title">
+                        <div class="row">
+                            <div class="col"><h4><b><i class="uil uil-store-alt"></i> Shopping Cart</b></h4></div>
+                            <div class="col align-self-center text-right text-muted"><%= "#{current_order.order_items.size} Items " %><i class="uil uil-book"></i></div>
+                        </div>
+                    </div>    
+                    <div class="row border-top border-bottom">
+                    <% if @order_items.size !=0 %>
+                        <div class="row main align-items-center"> <% @order_items.each do |item| %>
+                         <div class="d-flex justify-content-between align-items-center mt-3 p-2 items rounded">
+                        <div class="d-flex flex-row"> <%= image_tag(item.product.image.url, :alt => "rss feed",class: 'img') %>
+                            <div class="ml-2"><span class="font-weight-bold d-block margin-leftf">  <h5><%= item.product.name %></h5></span><span class="spec"> <p><%= "#{item.product.price} $ per one"%></p></span></div>
+                        </div>
+                        <div class="d-flex flex-row align-items-center"><span class="d-block">  
+                                      <%= form_for item, remote: true do |f| %>
+                                      <%= f.hidden_field :product_id, :value => item.product.id %>
+                                      <%= f.number_field :quantity, :value => item.quantity.to_i %>
+                                      <%= f.submit "Update Card", class: ''%>
+                                 <% end %>
+                                 <%= button_to order_item_path(item), method: :delete do %>
+                          <i class="uil uil-trash-alt 30px"></i>
+                            <% end %> 
+                            <span class="d-block ml-5 font-weight-bold"><p>Subtotal: <%= "#{item.total_price}$" %></p></span>
+                                 </span></div>
+                        </div>
+                           <% end %>    
+                    </div>
+                    <%else%>
+                    <div class = 'center' > <h3> There no items added, let's shopping! </h3>  </div>
+                    <%end%>
+                    </div>
+                    <div class="back-to-shop"><a href="#">&leftarrow;</a><span class="text-muted"> <%= link_to "Back to shop", products_path %></span></div>
+
+                </div>
+        
+                <div class="col-md-4 summary right">
+                    <div><h5><b>Summary</b></h5></div>
+                    <hr>
+                    <div class="row">
+                        <div class="col" style="padding-left:0;"><%= "#{current_order.order_items.size} Items"  %></div>
+                        <div class="col text-right"><%= "Total: #{number_to_currency current_order.sum1}" %></div>
+                    </div>
+    
+                        <p>SHIPPING</p>
+                       <%= form_for @order = current_order, remote:true, method: :put do |f| %>
+                       <%= f.collection_select :shipping_id, Shipping.all, :id,:name,  prompt: "Select Transport", class: "form-control center" %>
+                       <%= f.submit "Update",class: "" %>
+                       <%end%>
+                        <p>GIVE CODE</p>
+                        <%= form_for @order = current_order, remote:true, method: :put do |f| %>
+                        <%= f.text_field :voucher, class: 'form-control',placeholder: "Enter code"  %>
+                        <%= f.submit "Update",class: "" %>
+                        <%end%>
+                    <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                        <div class="col">TOTAL PRICE</div>
+                        <div class="col text-right"> <%="#{current_order.sum}$" %> </div>
+                    </div>
+                   <%= button_to "Check Out", cartsubmit_path , method: :post ,remote: true, class: 'btn btn-primary'%>
+                    </div>
+            </div>
+                   </div>
+                          </div>
+                                 </div>
+                                        </div>

@@ -1,0 +1,39 @@
+<% provide(:title, 'All products') %>
+
+<h1><span class= 'textp' ><i class="uil uil-book-open margin-rightt"></i></i>Books</span> </h1>
+<%# Show  cate %>
+<div class="btn-group" role="group" aria-label="Basic example">
+ <%= link_to "All", products_path , class:"btn btn-primary margin-leftf" %>
+<% Category.all.each do |cate|%>
+  <%= button_to index_cate_path(cate), class:"btn btn-primary margin-leftf" do %>
+<%=cate.name%>
+<%end%>
+<%end%>
+</div>
+<%# Show product %>
+<div class= "margintop30px" >
+  <%= will_paginate %>  </div>
+<ul class="users">
+<% @products.each do |product| %>
+<div class="card editcard" style="width: 18rem;">
+  <div class="card-body">
+   <%= image_tag(product.image.url, :alt => "rss feed",class: 'img') %>
+    <h6 class="card-text"><%=product.name %> </h6> 
+    <p class ='card-text'> <%=product.author %> </p>
+    <p class="card-text">Price :<%=product.price%></p>
+    <p  class="card-text"><%= link_to "#{Shop.find_by(id: product.shop_id).name}" , shop_showw_path(Shop.find_by(id: product.shop_id)),class: "" %> </p>
+      <% if current_user.role == 2 && !current_shop.nil? && product.shop_id == current_shop.id %>
+           <%= link_to "Your product", shoppage_path ,class: "btn btn-primary" %>
+      <%else%>
+    <% if product.quantity > 0 %>
+        <%= link_to "View", showtocart_path(product),class: "btn btn-primary" %>
+    <%else%>
+        <div class='soldout'>Sold out!</div>
+    <%end%>
+    <% end %>
+  </div>
+</div>
+<% end %>
+</ul>
+<div  class='margintop30px'>
+  <%= will_paginate %>  </div>

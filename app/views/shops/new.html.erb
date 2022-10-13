@@ -1,0 +1,19 @@
+<% provide(:title, 'Sign up') %>
+<h1><span class= 'textx ' > <i class="uil uil-shop margin-rightt"></i>Sign Up for your Store </span> </h1>
+ <img src="https://www.thecuriousreader.in/wp-content/uploads/2020/06/7-Independent-Bookstores-You%E2%80%99ll-Find-Only-In-Mumbai-cover.png" class="imgsignstore" alt="..."> </img>
+<div class="leftt">
+<div class="col-md-6 col-md-offset-3">
+<%= form_with(model: @shop, local: true) do |f| %>
+<i class="uil uil-tag-alt"></i>
+<%= f.label :name %>
+<%= f.text_field :name, class: 'form-control' %>
+<i class="uil uil-edit-alt"></i>
+<%= f.label :description %>
+<%= f.text_field :desciption, class: 'form-control' %>
+<i class="uil uil-image"></i>
+<%= f.label :avatar %>
+<%= f.file_field :avatar, class: 'form-control' %>
+<%= f.submit "Create My Store",class: "btn btn-primary" %>
+<% end %>
+</div>
+</div>

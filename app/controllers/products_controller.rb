@@ -12,6 +12,7 @@ class ProductsController < ApplicationController
         @products = current_shop.products
         @shops = Shop.all
     end
+    
     def index_cate 
         @category = Category.find_by(id: params[:id])
         @products = @category.products

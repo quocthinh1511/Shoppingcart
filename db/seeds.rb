@@ -116,6 +116,7 @@ Shipping.create(name: 'Truck Freight - 3$')
 Shipping.create(name: 'By Ship - 4$')
 Shipping.create(name: 'By Train- 5$')
 Shipping.create(name: 'By Plane  - 6$')
+
 Voucher.create(name: "abc", per: 10)
 Voucher.create(name: "abcd", per: 20)
 Voucher.create(name: "abcde", per: 30)

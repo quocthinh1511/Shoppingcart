@@ -6,9 +6,8 @@ class ApplicationController < ActionController::Base
         render html: "hello, world!"
     end   
     def current_order
-    return if session[:user_id].blank?
-
-    Order.find_or_create_by(user_id: session[:user_id])
+      return if session[:user_id].blank?
+      Order.find_or_create_by(user_id: session[:user_id])
     end
 
 
